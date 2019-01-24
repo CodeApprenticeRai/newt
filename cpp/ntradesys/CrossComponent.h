@@ -9,9 +9,6 @@
  *   e.g. 150 milliseconds.  This is a *very very simple and probably insufficient*
  *   attempt to avoid/reduce effect of pushing stock away from you while crossing.
  *
- * Revision History:
- * - Mod apratap March 2010.  Added _priorityScale = 2.0.
- * - Mod mcheyney April 28 2010.  Set _priorityScale = 1.0.
  *   Priority component should divide priority by 2.0 instead.
  */
 

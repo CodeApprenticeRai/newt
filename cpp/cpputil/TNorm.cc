@@ -1,7 +1,3 @@
-/*
-  Code by mcheyney (2009).  Copyright.  All rights reserved.
-*/
-
 #include "TNorm.h"
 #include "LinearInterpolate.h"
 // For namespace Cmp

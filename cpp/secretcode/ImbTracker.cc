@@ -1,6 +1,4 @@
 /**
-  Code by apratap (2009).
-  Copyright.  all rights reserved.
 
   ImbTracker.cc
 

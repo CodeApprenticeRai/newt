@@ -1,8 +1,5 @@
 /*
   BarraUtils.cc
-
-  Code by mcheyney (2009).  All rights reserved.
-
   Some utility code for working with Bara data.
   Targeted areas of functionality:
   - Reading stock factor betas/exposures, from exernally generated file.

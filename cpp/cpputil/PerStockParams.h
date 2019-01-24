@@ -1,7 +1,4 @@
 /*
-  Code by mcheyney (2009).
-  All rights reserved.
-
   PerStockParams.h - Utility class that:
   - Uses keyTable.
   - To construct a hash table which is:

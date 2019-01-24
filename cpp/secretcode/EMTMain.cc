@@ -1,65 +1,6 @@
 /*
   main/driver program for ExplanatoryReturnModelTester.
 
-  Example Command Lines:
-
-# Basic run.  Single stock (DELL), using ETF-MID erm flavor, and null fvSignal.
-run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home/mcheyney/tcost/DELL_SPY_population_set.txt" --timer-freq 1000 --useAsynchLogger true --asynchLogFile "/spare/local/mcheyney/ntradesys/tsim/20090921/EMT_ETFMID_DELL_SPY.log" --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home/mcheyney/study" --ermFlavor "ETF-MID" --ermEtfMidBetaFile "/apps/home/mcheyney/study/R1_SPY_betas.txt" --data-on ISLD --data-on ARCA --data-on NYSE --data-on BATS --sampleMilliSeconds 60000
-
-# Basic run.  Tech Stocks, using ETF-MID erm flavor, and null fvSignal.
-run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home/mcheyney/tcost/Tech_symbols_plus_SPY.txt" --timer-freq 1000 --useAsynchLogger true --asynchLogFile "/spare/local/mcheyney/ntradesys/tsim/20090921/EMT_ETFMID_Tech_SPY.log" --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home/mcheyney/study" --ermFlavor "ETF-MID" --ermEtfMidBetaFile "/apps/home/mcheyney/study/R1_SPY_betas.txt" --data-on ISLD --data-on ARCA --data-on NYSE --data-on BATS --sampleMilliSeconds 60000
-
-# Basic run.  Tech Stocks, using ETF-MID erm flavor, and null fvSignal.  Using 5 minute sample period.
-run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home/mcheyney/tcost/Tech_symbols_plus_SPY.txt" --timer-freq 1000 --useAsynchLogger true --asynchLogFile "/spare/local/mcheyney/ntradesys/tsim/20090921/EMT_ETFMID_Tech_SPY.5min.log" --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home/mcheyney/study" --ermFlavor "ETF-MID" --ermEtfMidBetaFile "/apps/home/mcheyney/study/R1_SPY_betas.txt" --data-on ISLD --data-on ARCA --data-on NYSE --data-on BATS --sampleMilliSeconds 300000
-
-# Basic run.  Tech Stocks, using ETF-MID erm flavor, and null fvSignal.  Using 5 minute sample period.  Run on waltham machines.
-run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home-ny/mcheyney/tcost/Tech_symbols_plus_SPY.txt" --timer-freq 1000 --useAsynchLogger true --asynchLogFile "/spare/local/mcheyney/ntradesys/tsim/20090921/EMT_ETFMID_Tech_SPY.5min.log" --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home-ny/mcheyney/study" --ermFlavor "ETF-MID" --ermEtfMidBetaFile "/apps/home-ny/mcheyney/study/R1_SPY_betas.txt" --data-on ISLD --data-on ARCA --data-on NYSE --data-on BATS --sampleMilliSeconds 300000
-
-# All stocks in R1mem: using ETF-MID erm flavor, and null fvSignal.  Using 5 minute sample period.  Run on waltham machines.
-run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home-ny/mcheyney/tcost/R1_symbols_plus_SPY.txt" --timer-freq 1000 --useAsynchLogger true --asynchLogFile "/spare/local/mcheyney/ntradesys/tsim/20090921/EMT_ETFMID_R1_SPY.5min.log" --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home-ny/mcheyney/study" --ermFlavor "ETF-MID" --ermEtfMidBetaFile "/apps/home-ny/mcheyney/study/R1_SPY_betas.txt" --data-on ISLD --data-on ARCA --data-on NYSE --data-on BATS --sampleMilliSeconds 300000
-
-# Tech Stocks, using LFM-EW erm flavor, and null fvSignal.  Using 5 minute sample period.
-run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home/mcheyney/tcost/Tech_symbols.txt" --timer-freq 1000 --useAsynchLogger true --asynchLogFile "/spare/local/mcheyney/ntradesys/tsim/20090921/EMT_LFMEW_Tech.5min.log" --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home/mcheyney/study" --ermFlavor "LFM-EW" --ermEtfMidBetaFile "/apps/home/mcheyney/study/R1_SPY_betas.txt" --data-on ISLD --data-on ARCA --data-on NYSE --data-on BATS --sampleMilliSeconds 300000
-
-# Tech Stocks, using LFM-VW erm flavor, and null fvSignal.  Using 5 minute sample period.
-run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home/mcheyney/tcost/Tech_symbols.txt" --timer-freq 1000 --useAsynchLogger true --asynchLogFile "/spare/local/mcheyney/ntradesys/tsim/20090921/EMT_LFMVW_Tech.5min.log" --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home/mcheyney/study" --ermFlavor "LFM-VW" --ermEtfMidBetaFile "/apps/home/mcheyney/study/R1_SPY_betas.txt" --data-on ISLD --data-on ARCA --data-on NYSE --data-on BATS --sampleMilliSeconds 300000 --mktCapFile "/apps/home/mcheyney/study/R1_mkt_cap.txt"
-
-# All stocks in R1mem using LFM-BARRA.  Using 5 minute sample period.
-run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home-ny/mcheyney/study/R1_symbols.200909.txt" --timer-freq 1000 --useAsynchLogger true --asynchLogFile "/spare/local/mcheyney/ntradesys/tsim/20090921/EMT_LFMBARRA_R1.5min.log" --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home-ny/mcheyney/study" --ermFlavor "LFM-BARRA" --data-on ISLD --data-on ARCA --data-on NYSE --data-on BATS --sampleMilliSeconds 300000 --barraRiskFile "/apps/home-ny/mcheyney/study/USE3S0909.RSK" --barraIndexWeightsFile "/apps/home-ny/mcheyney/study/R1_barra_index_weights_t.txt"
-
-# All stocks in R1mem using LFM-BARRA with just style factors (no industry factors).  Using 5 minute sample period.
-run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home-ny/mcheyney/study/R1_symbols.200909.txt" --timer-freq 1000 --useAsynchLogger true --asynchLogFile "/spare/local/mcheyney/ntradesys/tsim/20090921/EMT_LFMBARRA_STYLEONLY_R1.5min.log" --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home-ny/mcheyney/study" --ermFlavor "LFM-BARRA" --data-on ISLD --data-on ARCA --data-on NYSE --data-on BATS --sampleMilliSeconds 300000 --barraRiskFile "/apps/home-ny/mcheyney/study/USE3S0909.STYLE_ONLY.RSK" --barraIndexWeightsFile "/apps/home-ny/mcheyney/study/R1_barra_index_weights_t.txt"
-
-# All stocks in R1mem using LFM-BARRA with just VOLATILITY style factor (no industry factors).  Using 5 minute sample period.
-run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home-ny/mcheyney/study/R1_symbols.200909.txt" --timer-freq 1000 --useAsynchLogger true --asynchLogFile "/spare/local/mcheyney/ntradesys/tsim/20090921/EMT_LFMBARRA_VOLONLY_R1.5min.log" --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home-ny/mcheyney/study" --ermFlavor "LFM-BARRA" --data-on ISLD --data-on ARCA --data-on NYSE --data-on BATS --sampleMilliSeconds 300000 --barraRiskFile "/apps/home-ny/mcheyney/study/USE3S0909.VOL_ONLY.RSK" --barraIndexWeightsFile "/apps/home-ny/mcheyney/study/R1_barra_index_weights_t.txt"
-
-# DELL using LFM-BARRA.  Using 5 minute sample period.
-# Note: Shouldn't actually be used.  Synthetic index weights will be incorrect.
-#  Just for testing.
-run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home/mcheyney/tcost/DELL_population_set.txt" --timer-freq 1000 --useAsynchLogger true --asynchLogFile "/spare/local/mcheyney/ntradesys/tsim/20090921/EMT_LFMBARRA_DELL.5min.log" --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home/mcheyney/study" --ermFlavor "LFM-BARRA" --data-on ISLD --data-on ARCA --data-on NYSE --data-on BATS --sampleMilliSeconds 300000 --barraRiskFile "/apps/compustat/barra/data/RSK/USE3S0909.RSK" --barraIndexWeightsFile "/apps/home-ny/mcheyney/study/R1_barra_index_weights_t.200909.txt" --printBarraMatrices
-
-# DELL &WMT using LFM-BARRA.  Using 5 minute sample period.
-# Note: Special factorBeta and factorWeight files have been constructed for this test run.
-# They should show:
-# - Compute HW index is 100% DELL, and DELL has 1.0 industry weight in comp HW.
-# - Department Store index is 100% WMT, and WMT has 1.0 industry weight in Dept Store.
-run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home/mcheyney/tcost/DELL_WMT_population_set.txt" --timer-freq 1000 --useAsynchLogger true --asynchLogFile "/spare/local/mcheyney/ntradesys/tsim/20090921/EMT_LFMBARRA_DELL_WMT.5min.log" --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home/mcheyney/study" --ermFlavor "LFM-BARRA" --data-on ISLD --data-on ARCA --data-on NYSE --data-on BATS --sampleMilliSeconds 300000 --barraRiskFile "/apps/home/mcheyney/study/USE3S0909.DELL.WMT.RSK" --barraIndexWeightsFile "/apps/home-ny/mcheyney/study/R1_barra_index_weights_t.DELL.WMT.txt" --printBarraMatrices
-
-# DELL MSFT INTC QCOM using LFM-BARRA.  Using 5 minute sample period.
-# Note: Special factorBeta and factorWeight files have been constructed for this test run.
-# They should show:
-# - Computer HW index is 25% of each of DELL MSFT INTC QCOM.
-# - DELL MSFT INTC QCOM all have 1.0 (100%) exposuse ot that index.
-# ==> Should be equivalent to EW index of those 3 stocks.
-run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home/mcheyney/tcost/DELL_MSFT_INTC_QCOM_population_set.txt" --timer-freq 1000 --useAsynchLogger true --asynchLogFile "/spare/local/mcheyney/ntradesys/tsim/20090921/DELL_MSFT_INTC_QCOM.5min.log" --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home/mcheyney/study" --ermFlavor "LFM-BARRA" --data-on ISLD --data-on ARCA --data-on NYSE --data-on BATS --sampleMilliSeconds 300000 --barraRiskFile "/apps/home/mcheyney/study/USE3S0909.DELL.MSFT.INTC.QCOM.RSK" --barraIndexWeightsFile "/apps/home-ny/mcheyney/study/R1_barra_index_weights_t.DELL.MSFT.INTC.QCOM.txt" --printBarraMatrices
-
-# Tech stocks using LFM-BARRA.  Using 5 minute sample period.
-# Note: Special factorBeta and factorWeight files have been constructed for this test run.
-# They should show:
-# - Computer HW index is 25% of each of DELL MSFT INTC QCOM.
-# - DELL MSFT INTC QCOM all have 1.0 (100%) exposuse ot that index.
-# ==> Should be equivalent to EW index of those 3 stocks.
-run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home/mcheyney/study/Barra_Tech_population_set.txt" --timer-freq 1000 --useAsynchLogger true --asynchLogFile "/spare/local/mcheyney/ntradesys/tsim/20090921/Barra_Tech_Stocks.INDRF.5min.log" --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home/mcheyney/study" --ermFlavor "LFM-BARRA" --data-on ISLD --data-on ARCA --data-on NYSE --data-on BATS --sampleMilliSeconds 300000 --barraRiskFile "/apps/home/mcheyney/study/USE3S0909.INDUSTRY_ONLY.RSK" --barraIndexWeightsFile "/apps/home-ny/mcheyney/study/R1_barra_index_weights_t.txt" --printBarraMatrices
 */
 
 #include "DataManager.h"
@@ -102,10 +43,7 @@ void EMTConfigHelper::setDefaultValues() {
   fvSignalFlavor = "";
   ermFlavor = "";
   sampleMilliSeconds = 60000;
-  ermEtfMidBetaFile = "/apps/home-ny/mcheyney/study/R1_SPY_betas.txt";
-  mktCapFile = "/apps/home-ny/mcheyney/study/R1_mkt_cap.txt";
   barraRiskFile = "/apps/compustat/barra/data/RSK/USE3S0909.RSK";
-  barraIndexWeightsFile = "/apps/home-ny/mcheyney/study/R1_barra_index_weights_t.txt";
   checkBarraWeights = false;
   printBarraMatrices = true;
 }

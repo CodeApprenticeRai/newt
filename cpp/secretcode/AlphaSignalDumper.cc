@@ -1,7 +1,4 @@
 /*
-  Code by mcheyney (2009).
-  All rights reserved.
-
   Simple DataManager/UpdateListener based widgets + program for testing 
     *unconditional* alpha signals.
   Operates on a single fixed (pre-specified) predictive horizion.

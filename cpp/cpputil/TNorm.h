@@ -1,8 +1,3 @@
-/*
-  tnorm.h - code for working with truncated normal distributions.
-  code by mcheyney, 2009.  Copyright.  All rigts reserved.
-*/
-
 #ifndef __TNORM_H__
 #define __TNORM_H__
 

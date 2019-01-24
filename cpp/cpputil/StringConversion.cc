@@ -1,8 +1,6 @@
 /*
   Utility class for doing string <----> other type conversion, with symtax that
   makes sense to me.
-
-  Code by mcheyney.
 */
 
 #include "StringConversion.h"

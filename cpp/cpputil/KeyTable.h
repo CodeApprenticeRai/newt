@@ -1,6 +1,4 @@
 /*
-  Code by mcheyney (2009).  All rights reserved.
-
   KeyTable.h  Utility for reading config files.  
   Parses config file which is assumed to have:
   - Multiple lines.

@@ -1,10 +1,6 @@
 /*
   Main/driver program for TradeTickPrinter.
 
-  Example command lines:
-  run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home/mcheyney/tcost/DELL_NYT_population_set.txt" --wake-freq 1000  --timer-freq 1000 
-
-  run --start-date 20090921 --end-date 20090922 --symbol-file "/apps/home/mcheyney/tcost/DELL_population_set.txt" --timer-freq 1000 --debug-stream.path "/spare/local/mcheyney/ntradesys/tsim/20090921/"  --file-table.path "/apps/home/mcheyney/study"
 */
 
 #include "DataManager.h"

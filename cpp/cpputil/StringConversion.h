@@ -1,8 +1,6 @@
 /*
   Utility class for doing string <----> other type conversion, with obvious success/failure
-    values, and various syntax flavors.
 
-  Code by mcheyney.
 */
 
 #ifndef __STRINGCONVERSION_H__

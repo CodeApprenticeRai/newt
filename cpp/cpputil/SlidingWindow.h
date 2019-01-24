@@ -2,7 +2,6 @@
   Class that implements a sliding window (on a type that has defined comparison operators).
   Optimized for query time, not space efficiency.
 
-  Code by mcheyney (2010).  All rights reserved.
 */
 
 #ifndef __SLIDINGWINDOW_H__

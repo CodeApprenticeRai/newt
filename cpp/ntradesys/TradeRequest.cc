@@ -1,8 +1,3 @@
-/*
-  TradeRequest.cc
-
-  Code by mcheyney, 2008 or 2009.  All rights reserved.  
-*/
 #include "TradeRequest.h"
 #include <cl-util/float_cmp.h>
 using namespace clite::util;
